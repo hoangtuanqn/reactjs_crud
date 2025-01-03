@@ -12,17 +12,27 @@ function App() {
     const [editId, setEditId] = useState(null);
 
     const handleEdit = (id) => {
-        setType("edit");
+        if (id === null) {
+            setType("add");
+        } else {
+            setType("edit");
+        }
         setEditId(id);
     };
-
+    const payloadData = {
+        type,
+        data,
+        setData,
+        editId,
+        handleEdit,
+    };
     return (
         <>
             <Header />
             <main>
                 <div className="content">
-                    <Form type={type} data={data} setData={setData} editId={editId} />
-                    <ListData data={data} setData={setData} handleEdit={handleEdit} />
+                    <Form {...payloadData} />
+                    <ListData {...payloadData} />
                 </div>
             </main>
         </>

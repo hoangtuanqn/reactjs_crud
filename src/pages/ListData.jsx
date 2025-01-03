@@ -1,4 +1,4 @@
-const ListData = ({ type, data = [], setData }) => {
+const ListData = ({ type, setData, handleEdit, data = [] }) => {
     const handleDelete = (id) => {
         if (window.confirm("Are you sure you want to delete")) {
             const newData = [...data];
@@ -7,7 +7,7 @@ const ListData = ({ type, data = [], setData }) => {
             return newData;
         }
     };
-    const handleEdit = (id) => {};
+    // const handleEdit = (id) => {};
     return (
         <div className="table-data">
             <table>
@@ -20,22 +20,30 @@ const ListData = ({ type, data = [], setData }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.reverse().map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.countryCode}</td>
-                            <td>{item.countryName}</td>
-                            <td>{item.capitalCity}</td>
-                            <td className="action">
-                                <span className="action_data" onClick={() => handleEdit(index)}>
-                                    Modify
-                                </span>{" "}
-                                |{" "}
-                                <span className="action_data" onClick={() => handleDelete(index)} href="#!">
-                                    Delete
-                                </span>
+                    {data.length !== 0 ? (
+                        data.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.countryCode}</td>
+                                <td>{item.countryName}</td>
+                                <td>{item.capitalCity}</td>
+                                <td className="action">
+                                    <span className="action_data" onClick={() => handleEdit(index)}>
+                                        Modify
+                                    </span>{" "}
+                                    |{" "}
+                                    <span className="action_data" onClick={() => handleDelete(index)} href="#!">
+                                        Delete
+                                    </span>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td align="center" colSpan={4}>
+                                Không có dữ liệu
                             </td>
                         </tr>
-                    ))}
+                    )}
                 </tbody>
             </table>
         </div>

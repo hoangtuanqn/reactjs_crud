@@ -1,42 +1,27 @@
 [
     {
-        "countryName": "VN",
-        "countryCode": "Việt Nam",
-        "capitalCity": "Hà Nội"
+        "countryCode": "VN",
+        "countryName": "Vietnam",
+        "capitalCity": "Hanoi"
     },
     {
-        "countryName": "VN",
-        "countryCode": "Việt Nam",
-        "capitalCity": "Hà Nội"
+        "countryCode": "US",
+        "countryName": "United States",
+        "capitalCity": "Washington, D.C."
     },
     {
-        "countryName": "VN",
-        "countryCode": "Việt Nam",
-        "capitalCity": "Hà Nội"
+        "countryCode": "FR",
+        "countryName": "France",
+        "capitalCity": "Paris"
     },
     {
-        "countryName": "VN",
-        "countryCode": "Việt Nam",
-        "capitalCity": "Hà Nội"
+        "countryCode": "JP",
+        "countryName": "Japan",
+        "capitalCity": "Tokyo"
     },
     {
-        "countryName": "VN",
-        "countryCode": "Việt Nam",
-        "capitalCity": "Hà Nội"
-    },
-    {
-        "countryName": "VN",
-        "countryCode": "Việt Nam",
-        "capitalCity": "Hà Nội"
-    },
-    {
-        "countryName": "VN",
-        "countryCode": "Việt Nam",
-        "capitalCity": "Hà Nội"
-    },
-    {
-        "countryName": "VN",
-        "countryCode": "Việt Nam",
-        "capitalCity": "Hà Nội"
+        "countryCode": "IT",
+        "countryName": "Italy",
+        "capitalCity": "Rome"
     }
 ]

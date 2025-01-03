@@ -1,13 +1,17 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const Form = ({ type, data, setData, editId }) => {
+const Form = ({ type, data, setData, editId, handleEdit }) => {
     const [code, setCode] = useState("");
     const [name, setName] = useState("");
     const [city, setCity] = useState("");
     const nameRef = useRef(null);
     const codeRef = useRef(null);
     const cityRef = useRef(null);
-
+    useEffect(() => {
+        setName(data[editId]?.countryName ?? "");
+        setCode(data[editId]?.countryCode ?? "");
+        setCity(data[editId]?.capitalCity ?? "");
+    }, [editId]);
     const handleSubmit = () => {
         if (!code) {
             window.alert("Vui lòng nhập Country Code");
@@ -23,12 +27,20 @@ const Form = ({ type, data, setData, editId }) => {
             cityRef.current.focus();
         } else {
             const newData = [...data];
-            newData.push({ countryName: name, countryCode: code, capitalCity: city });
+            const dataInput = { countryName: name, countryCode: code, capitalCity: city };
+            if (type === "edit" && editId !== null) {
+                newData[editId] = dataInput;
+                handleEdit(null);
+                window.alert("Cập nhật dữ liệu thành công");
+            } else {
+                newData.unshift(dataInput);
+                window.alert("Thêm dữ liệu thành công");
+            }
+            setData(newData);
             setCode("");
             setName("");
             setCity("");
             codeRef.current.focus();
-            setData(newData);
         }
     };
     return (
@@ -36,7 +48,7 @@ const Form = ({ type, data, setData, editId }) => {
             <div className="form dfcenter">
                 <form action="#">
                     <div className="form-group">
-                        <label htmlFor="code">Country Code:</label>
+                        <label htmlFor="code">Country Code (*):</label>
                         <input
                             ref={codeRef}
                             type="text"
@@ -50,7 +62,7 @@ const Form = ({ type, data, setData, editId }) => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Country Name:</label>
+                        <label htmlFor="name">Country Name (*):</label>
                         <input
                             ref={nameRef}
                             type="text"
@@ -64,7 +76,7 @@ const Form = ({ type, data, setData, editId }) => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="city">Capital City:</label>
+                        <label htmlFor="city">Capital City (*):</label>
                         <input
                             ref={cityRef}
                             type="text"

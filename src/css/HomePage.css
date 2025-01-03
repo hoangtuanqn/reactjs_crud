@@ -24,6 +24,9 @@ body {
     margin: 0 auto;
     max-width: calc(100% - 44px);
 }
+.logo {
+    width: 155px;
+}
 .dfcenter {
     display: flex;
     align-items: center;
